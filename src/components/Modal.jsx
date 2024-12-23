@@ -27,16 +27,19 @@ const Modal = ({ item, onClose, onFavoriteChange }) => {
 
       if (!isFavorite) {
         await axios.post(
-          "legacyback.aicc4park.co.kr/pgdb/favoritelist",
+          "https://legacyback.aicc4park.co.kr/pgdb/favoritelist",
           { id: item.heritageid, type: "heritage" },
           { headers: { Authorization: `Bearer ${token}` } }
         );
         dispatch(addFavorite({ type: "heritage", data: item }));
       } else {
-        await axios.delete("legacyback.aicc4park.co.kr/pgdb/favoritelist", {
-          headers: { Authorization: `Bearer ${token}` },
-          data: { id: item.heritageid, type: "heritage" },
-        });
+        await axios.delete(
+          "https://legacyback.aicc4park.co.kr/pgdb/favoritelist",
+          {
+            headers: { Authorization: `Bearer ${token}` },
+            data: { id: item.heritageid, type: "heritage" },
+          }
+        );
         dispatch(removeFavorite({ type: "heritage", id: item.heritageid }));
       }
 

@@ -7,7 +7,7 @@ export const fetchFestivalData = createAsyncThunk(
   async ({ year, month }, { rejectWithValue }) => {
     try {
       const response = await axios.get(
-        "legacyback.aicc4park.co.kr/pgdb/festivals",
+        "https://legacyback.aicc4park.co.kr/pgdb/festivals",
         {
           params: { year, month },
         }

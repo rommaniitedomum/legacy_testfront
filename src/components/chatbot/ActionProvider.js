@@ -22,7 +22,7 @@ class ActionProvider {
         messages: [...prevState.messages, loadingMessage],
       }));
 
-      const response = await fetch("legacyback.aicc4park.co.kr/chat", {
+      const response = await fetch("https://legacyback.aicc4park.co.kr/chat", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

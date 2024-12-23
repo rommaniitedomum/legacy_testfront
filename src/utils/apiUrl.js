@@ -1,4 +1,4 @@
-const rootPath = "legacyback.aicc4park.co.kr";
+const rootPath = "https://legacyback.aicc4park.co.kr";
 
 const GET_HERITAGE_API_URL = `${rootPath}/heritage`;
 const GET_FESTIVAL_API_URL = `${rootPath}/festival`;

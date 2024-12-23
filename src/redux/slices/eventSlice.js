@@ -6,7 +6,9 @@ export const fetchEvent = createAsyncThunk(
   "event/fetchEvent",
   async (_, { rejectWithValue }) => {
     try {
-      const response = await axios.get("legacyback.aicc4park.co.kr/event"); // Adjust the URL to match your API
+      const response = await axios.get(
+        "https://legacyback.aicc4park.co.kr/event"
+      ); // Adjust the URL to match your API
       return response.data; // Return the fetched data
     } catch (error) {
       return rejectWithValue(error.response?.data || "Failed to fetch events");

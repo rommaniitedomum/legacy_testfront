@@ -33,7 +33,7 @@ const Login = () => {
 
     try {
       const response = await axios.post(
-        "legacyback.aicc4park.co.kr/account/login",
+        "https://legacyback.aicc4park.co.kr/account/login",
         formData,
         {
           headers: {

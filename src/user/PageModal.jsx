@@ -27,7 +27,7 @@ const PageModal = ({ isOpen, onClose, item, type, onUpdate }) => {
 
       await axios({
         method: "delete",
-        url: "legacyback.aicc4park.co.kr/pgdb/favoritelist",
+        url: "https://legacyback.aicc4park.co.kr/pgdb/favoritelist",
         headers: {
           Authorization: `Bearer ${token}`,
           "Content-Type": "application/json",

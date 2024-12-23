@@ -13,7 +13,7 @@ export const loginUser = createAsyncThunk(
   async (credentials, { rejectWithValue }) => {
     try {
       const response = await axios.post(
-        "legacyback.aicc4park.co.kr/login",
+        "https://legacyback.aicc4park.co.kr/login",
         credentials
       );
       const { token, user } = response.data;

@@ -7,7 +7,7 @@ export const fetchHeritageData = createAsyncThunk(
   async (_, { rejectWithValue }) => {
     try {
       const response = await axios.get(
-        "legacyback.aicc4park.co.kr/pgdb/heritage"
+        "https://legacyback.aicc4park.co.kr/pgdb/heritage"
       );
       return response.data; // Directly return the API response
     } catch (error) {
