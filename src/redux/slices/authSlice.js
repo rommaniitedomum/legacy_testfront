@@ -13,7 +13,7 @@ export const loginUser = createAsyncThunk(
   async (credentials, { rejectWithValue }) => {
     try {
       const response = await axios.post(
-        "https://d11c3d9pm8n3w5.cloudfront.net//login",
+        "https://d11c3d9pm8n3w5.cloudfront.net/login",
         credentials
       );
       const { token, user } = response.data;

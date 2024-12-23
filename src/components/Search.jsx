@@ -58,7 +58,7 @@ const SearchPage = () => {
       setIsLoading(true);
       try {
         const response = await axios.get(
-          "https://d11c3d9pm8n3w5.cloudfront.net//pgdb/heritage",
+          "https://d11c3d9pm8n3w5.cloudfront.net/pgdb/heritage",
           {
             signal: controller.signal,
           }
@@ -92,7 +92,7 @@ const SearchPage = () => {
     try {
       const token = localStorage.getItem("token");
       const response = await axios.get(
-        "https://d11c3d9pm8n3w5.cloudfront.net//pgdb/favoritelist",
+        "https://d11c3d9pm8n3w5.cloudfront.net/pgdb/favoritelist",
         {
           headers: { Authorization: `Bearer ${token}` },
         }
@@ -215,7 +215,7 @@ const SearchPage = () => {
     try {
       if (!isCurrentlyFavorite) {
         await axios.post(
-          "https://d11c3d9pm8n3w5.cloudfront.net//pgdb/favoritelist",
+          "https://d11c3d9pm8n3w5.cloudfront.net/pgdb/favoritelist",
           { id: heritage.heritageid, type: "heritage" },
           { headers: { Authorization: `Bearer ${token}` } }
         );
@@ -223,7 +223,7 @@ const SearchPage = () => {
         setAlertMessage("즐겨찾기에 추가되었습니다.");
       } else {
         await axios.delete(
-          "https://d11c3d9pm8n3w5.cloudfront.net//pgdb/favoritelist",
+          "https://d11c3d9pm8n3w5.cloudfront.net/pgdb/favoritelist",
           {
             headers: { Authorization: `Bearer ${token}` },
             data: { id: heritage.heritageid, type: "heritage" },

@@ -23,7 +23,7 @@ class ActionProvider {
       }));
 
       const response = await fetch(
-        "https://d11c3d9pm8n3w5.cloudfront.net//chat",
+        "https://d11c3d9pm8n3w5.cloudfront.net/chat",
         {
           method: "POST",
           headers: {
