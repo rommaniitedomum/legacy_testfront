@@ -6,9 +6,12 @@ export const fetchFestivalData = createAsyncThunk(
   "festival/fetchFestivalData",
   async ({ year, month }, { rejectWithValue }) => {
     try {
-      const response = await axios.get("http://3.86.247.231//pgdb/festivals", {
-        params: { year, month },
-      });
+      const response = await axios.get(
+        "https://d11c3d9pm8n3w5.cloudfront.net//pgdb/festivals",
+        {
+          params: { year, month },
+        }
+      );
 
       // 응답 데이터 구조 확인 및 변환
       if (response.data && response.data.transformedResults) {

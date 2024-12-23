@@ -22,13 +22,16 @@ class ActionProvider {
         messages: [...prevState.messages, loadingMessage],
       }));
 
-      const response = await fetch("http://3.86.247.231//chat", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ question: message }),
-      });
+      const response = await fetch(
+        "https://d11c3d9pm8n3w5.cloudfront.net//chat",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ question: message }),
+        }
+      );
 
       const data = await response.json();
 

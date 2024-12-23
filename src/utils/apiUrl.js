@@ -1,4 +1,4 @@
-const rootPath = "http://3.86.247.231/";
+const rootPath = "https://d11c3d9pm8n3w5.cloudfront.net/";
 
 const GET_HERITAGE_API_URL = `${rootPath}/heritage`;
 const GET_FESTIVAL_API_URL = `${rootPath}/festival`;

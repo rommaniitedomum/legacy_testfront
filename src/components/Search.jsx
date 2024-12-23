@@ -57,9 +57,12 @@ const SearchPage = () => {
     const fetchGetHeritageData = async () => {
       setIsLoading(true);
       try {
-        const response = await axios.get("http://3.86.247.231//pgdb/heritage", {
-          signal: controller.signal,
-        });
+        const response = await axios.get(
+          "https://d11c3d9pm8n3w5.cloudfront.net//pgdb/heritage",
+          {
+            signal: controller.signal,
+          }
+        );
 
         if (!response.data) {
           throw new Error("데이터를 불러오는데 실패했습니다");
@@ -89,7 +92,7 @@ const SearchPage = () => {
     try {
       const token = localStorage.getItem("token");
       const response = await axios.get(
-        "http://3.86.247.231//pgdb/favoritelist",
+        "https://d11c3d9pm8n3w5.cloudfront.net//pgdb/favoritelist",
         {
           headers: { Authorization: `Bearer ${token}` },
         }
@@ -212,17 +215,20 @@ const SearchPage = () => {
     try {
       if (!isCurrentlyFavorite) {
         await axios.post(
-          "http://3.86.247.231//pgdb/favoritelist",
+          "https://d11c3d9pm8n3w5.cloudfront.net//pgdb/favoritelist",
           { id: heritage.heritageid, type: "heritage" },
           { headers: { Authorization: `Bearer ${token}` } }
         );
         dispatch(addFavorite({ type: "heritage", data: heritage }));
         setAlertMessage("즐겨찾기에 추가되었습니다.");
       } else {
-        await axios.delete("http://3.86.247.231//pgdb/favoritelist", {
-          headers: { Authorization: `Bearer ${token}` },
-          data: { id: heritage.heritageid, type: "heritage" },
-        });
+        await axios.delete(
+          "https://d11c3d9pm8n3w5.cloudfront.net//pgdb/favoritelist",
+          {
+            headers: { Authorization: `Bearer ${token}` },
+            data: { id: heritage.heritageid, type: "heritage" },
+          }
+        );
         dispatch(removeFavorite({ type: "heritage", id: heritage.heritageid }));
         setAlertMessage("즐겨찾기가 해제되었습니다.");
       }

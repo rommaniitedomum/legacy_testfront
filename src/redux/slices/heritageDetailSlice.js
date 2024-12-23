@@ -6,7 +6,9 @@ export const fetchHeritageData = createAsyncThunk(
   "heritage/fetchHeritageData",
   async (_, { rejectWithValue }) => {
     try {
-      const response = await axios.get("http://3.86.247.231//pgdb/heritage");
+      const response = await axios.get(
+        "https://d11c3d9pm8n3w5.cloudfront.net//pgdb/heritage"
+      );
       return response.data; // Directly return the API response
     } catch (error) {
       return rejectWithValue(error.message || "Failed to fetch heritage data");

@@ -251,7 +251,9 @@ const Map = ({ selectedLocation }) => {
 
     const fetchGetHeritageData = async () => {
       try {
-        const response = await axios.get("http://3.86.247.231//pgdb/heritage");
+        const response = await axios.get(
+          "https://d11c3d9pm8n3w5.cloudfront.net//pgdb/heritage"
+        );
         if (!response.data) throw new Error("데이터를 불러오는데 실패했습니다");
         return response.data;
       } catch (error) {

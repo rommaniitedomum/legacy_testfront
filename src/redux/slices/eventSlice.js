@@ -6,7 +6,9 @@ export const fetchEvent = createAsyncThunk(
   "event/fetchEvent",
   async (_, { rejectWithValue }) => {
     try {
-      const response = await axios.get("http://3.86.247.231//event"); // Adjust the URL to match your API
+      const response = await axios.get(
+        "https://d11c3d9pm8n3w5.cloudfront.net//event"
+      ); // Adjust the URL to match your API
       return response.data; // Return the fetched data
     } catch (error) {
       return rejectWithValue(error.response?.data || "Failed to fetch events");

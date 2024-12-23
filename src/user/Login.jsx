@@ -33,7 +33,7 @@ const Login = () => {
 
     try {
       const response = await axios.post(
-        "http://3.86.247.231//account/login",
+        "https://d11c3d9pm8n3w5.cloudfront.net//account/login",
         formData,
         {
           headers: {

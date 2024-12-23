@@ -27,16 +27,19 @@ const Modal = ({ item, onClose, onFavoriteChange }) => {
 
       if (!isFavorite) {
         await axios.post(
-          "http://3.86.247.231//pgdb/favoritelist",
+          "https://d11c3d9pm8n3w5.cloudfront.net//pgdb/favoritelist",
           { id: item.heritageid, type: "heritage" },
           { headers: { Authorization: `Bearer ${token}` } }
         );
         dispatch(addFavorite({ type: "heritage", data: item }));
       } else {
-        await axios.delete("http://3.86.247.231//pgdb/favoritelist", {
-          headers: { Authorization: `Bearer ${token}` },
-          data: { id: item.heritageid, type: "heritage" },
-        });
+        await axios.delete(
+          "https://d11c3d9pm8n3w5.cloudfront.net//pgdb/favoritelist",
+          {
+            headers: { Authorization: `Bearer ${token}` },
+            data: { id: item.heritageid, type: "heritage" },
+          }
+        );
         dispatch(removeFavorite({ type: "heritage", id: item.heritageid }));
       }
 
