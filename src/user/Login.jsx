@@ -33,7 +33,7 @@ const Login = () => {
 
     try {
       const response = await axios.post(
-        "https://d11c3d9pm8n3w5.cloudfront.net/account/login",
+        "legacyback.aicc4park.co.kr/account/login",
         formData,
         {
           headers: {

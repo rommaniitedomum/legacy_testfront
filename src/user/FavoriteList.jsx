@@ -34,7 +34,7 @@ const FavoriteList = () => {
       try {
         const token = localStorage.getItem("token");
         const response = await axios.get(
-          "https://d11c3d9pm8n3w5.cloudfront.net/pgdb/favoritelist",
+          "legacyback.aicc4park.co.kr/pgdb/favoritelist",
           { headers: { Authorization: `Bearer ${token}` } }
         );
         setFavorites({
@@ -71,13 +71,10 @@ const FavoriteList = () => {
         type: type === "heritage" ? "heritage" : "event",
       };
 
-      await axios.delete(
-        "https://d11c3d9pm8n3w5.cloudfront.net/pgdb/favoritelist",
-        {
-          headers: { Authorization: `Bearer ${token}` },
-          data: { id: requestData.id, type: requestData.type },
-        }
-      );
+      await axios.delete("legacyback.aicc4park.co.kr/pgdb/favoritelist", {
+        headers: { Authorization: `Bearer ${token}` },
+        data: { id: requestData.id, type: requestData.type },
+      });
 
       // 업데이트된 아이템 리스트 생성
       const updatedItems = favorites[
@@ -144,7 +141,7 @@ const FavoriteList = () => {
     try {
       const token = localStorage.getItem("token");
       const response = await axios.get(
-        "https://d11c3d9pm8n3w5.cloudfront.net/pgdb/favoritelist",
+        "legacyback.aicc4park.co.kr/pgdb/favoritelist",
         { headers: { Authorization: `Bearer ${token}` } }
       );
 
