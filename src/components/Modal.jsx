@@ -27,13 +27,13 @@ const Modal = ({ item, onClose, onFavoriteChange }) => {
 
       if (!isFavorite) {
         await axios.post(
-          "http://localhost:8000/pgdb/favoritelist",
+          "http://3.86.247.231//pgdb/favoritelist",
           { id: item.heritageid, type: "heritage" },
           { headers: { Authorization: `Bearer ${token}` } }
         );
         dispatch(addFavorite({ type: "heritage", data: item }));
       } else {
-        await axios.delete("http://localhost:8000/pgdb/favoritelist", {
+        await axios.delete("http://3.86.247.231//pgdb/favoritelist", {
           headers: { Authorization: `Bearer ${token}` },
           data: { id: item.heritageid, type: "heritage" },
         });
@@ -74,12 +74,10 @@ const Modal = ({ item, onClose, onFavoriteChange }) => {
   return (
     <div
       className="fixed inset-0 w-full h-full bg-black/50 z-[9999] flex justify-center items-center"
-      onClick={onClose}
-    >
+      onClick={onClose}>
       <div
         className="relative bg-white text-black p-8 rounded-lg z-[10000] w-[90%] max-w-[800px] max-h-[90vh] overflow-y-auto"
-        onClick={(e) => e.stopPropagation()}
-      >
+        onClick={(e) => e.stopPropagation()}>
         <div className="flex justify-between items-center mb-5">
           <h2 className="text-[28px] m-0 MainFont break-words flex-1 pr-5">
             {item.ccbamnm1}
@@ -87,14 +85,12 @@ const Modal = ({ item, onClose, onFavoriteChange }) => {
           <div className="flex items-center gap-4">
             <button
               onClick={handleFavoriteClick}
-              className="text-2xl text-yellow-500 hover:text-yellow-600"
-            >
+              className="text-2xl text-yellow-500 hover:text-yellow-600">
               {isFavorite ? <AiFillStar /> : <AiOutlineStar />}
             </button>
             <button
               onClick={onClose}
-              className="bg-blue-800 text-white px-4 py-1 border-none text-[25px] rounded cursor-pointer"
-            >
+              className="bg-blue-800 text-white px-4 py-1 border-none text-[25px] rounded cursor-pointer">
               X
             </button>
           </div>
@@ -125,15 +121,13 @@ const Modal = ({ item, onClose, onFavoriteChange }) => {
         {alertMessage && (
           <div
             className="fixed inset-0 bg-black/50 z-[10001] flex items-center justify-center"
-            onClick={closeAlert}
-          >
+            onClick={closeAlert}>
             <div
               className="bg-[#e2e2e2] text-black p-4 md:p-5 rounded-lg 
                     w-[90%] md:w-[400px] max-w-[400px]
                     h-[180px] md:h-[200px] 
                     flex flex-col justify-center items-center text-center"
-              onClick={(e) => e.stopPropagation()}
-            >
+              onClick={(e) => e.stopPropagation()}>
               <p className="font-bold text-base md:text-lg whitespace-pre-wrap mt-4 md:mt-5">
                 {alertMessage}
               </p>
@@ -143,15 +137,13 @@ const Modal = ({ item, onClose, onFavoriteChange }) => {
                     <button
                       onClick={handleLoginClick}
                       className="bg-blue-600 text-white px-3 md:px-4 py-1.5 md:py-2 rounded text-sm md:text-base
-                               cursor-pointer hover:bg-blue-700 transition-colors"
-                    >
+                               cursor-pointer hover:bg-blue-700 transition-colors">
                       로그인하기
                     </button>
                     <button
                       onClick={closeAlert}
                       className="bg-gray-500 text-white px-3 md:px-4 py-1.5 md:py-2 rounded text-sm md:text-base
-                               cursor-pointer hover:bg-gray-600 transition-colors"
-                    >
+                               cursor-pointer hover:bg-gray-600 transition-colors">
                       닫기
                     </button>
                   </>
@@ -159,8 +151,7 @@ const Modal = ({ item, onClose, onFavoriteChange }) => {
                   <button
                     onClick={closeAlert}
                     className="bg-blue-600 text-white px-3 md:px-4 py-1.5 md:py-2 rounded text-sm md:text-base
-                             cursor-pointer hover:bg-blue-700 transition-colors"
-                  >
+                             cursor-pointer hover:bg-blue-700 transition-colors">
                     확인
                   </button>
                 )}

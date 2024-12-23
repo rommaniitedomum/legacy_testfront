@@ -22,7 +22,7 @@ class ActionProvider {
         messages: [...prevState.messages, loadingMessage],
       }));
 
-      const response = await fetch("http://localhost:8000/chat", {
+      const response = await fetch("http://3.86.247.231//chat", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

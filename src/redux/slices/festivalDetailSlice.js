@@ -6,7 +6,7 @@ export const fetchFestivalData = createAsyncThunk(
   "festival/fetchFestivalData",
   async ({ year, month }, { rejectWithValue }) => {
     try {
-      const response = await axios.get("http://localhost:8000/pgdb/festivals", {
+      const response = await axios.get("http://3.86.247.231//pgdb/festivals", {
         params: { year, month },
       });
 

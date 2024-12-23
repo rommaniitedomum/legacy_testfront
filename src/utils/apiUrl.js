@@ -1,4 +1,4 @@
-const rootPath = "http://localhost:8000";
+const rootPath = "http://3.86.247.231/";
 
 const GET_HERITAGE_API_URL = `${rootPath}/heritage`;
 const GET_FESTIVAL_API_URL = `${rootPath}/festival`;

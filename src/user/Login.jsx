@@ -33,7 +33,7 @@ const Login = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:8000/account/login",
+        "http://3.86.247.231//account/login",
         formData,
         {
           headers: {
@@ -90,8 +90,7 @@ const Login = () => {
             <div>
               <label
                 htmlFor="email"
-                className="block text-sm font-bold text-gray-700 mb-1"
-              >
+                className="block text-sm font-bold text-gray-700 mb-1">
                 이메일
               </label>
               <input
@@ -108,8 +107,7 @@ const Login = () => {
             <div>
               <label
                 htmlFor="password"
-                className="block text-sm font-bold text-gray-700 mb-1"
-              >
+                className="block text-sm font-bold text-gray-700 mb-1">
                 비밀번호
               </label>
               <input
@@ -135,15 +133,13 @@ const Login = () => {
             <button
               type="submit"
               disabled={loading}
-              className="w-full flex justify-center py-3 px-4 border border-transparent text-sm font-medium rounded-xl text-white bg-gradient-to-r from-blue-900 via-blue-600 to-blue-400 hover:from-blue-800 hover:via-blue-500 hover:to-blue-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-all duration-200 ease-in-out transform hover:-translate-y-0.5"
-            >
+              className="w-full flex justify-center py-3 px-4 border border-transparent text-sm font-medium rounded-xl text-white bg-gradient-to-r from-blue-900 via-blue-600 to-blue-400 hover:from-blue-800 hover:via-blue-500 hover:to-blue-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition-all duration-200 ease-in-out transform hover:-translate-y-0.5">
               {loading ? (
                 <span className="flex items-center">
                   <svg
                     className="animate-spin -ml-1 mr-2 h-4 w-4 text-white"
                     fill="none"
-                    viewBox="0 0 24 24"
-                  >
+                    viewBox="0 0 24 24">
                     <circle
                       className="opacity-25"
                       cx="12"
@@ -173,8 +169,7 @@ const Login = () => {
           </span>
           <Link
             to="/signup"
-            className="text-base bg-gradient-to-r from-blue-900 via-blue-600 to-blue-500 bg-clip-text text-transparent font-medium hover:underline"
-          >
+            className="text-base bg-gradient-to-r from-blue-900 via-blue-600 to-blue-500 bg-clip-text text-transparent font-medium hover:underline">
             회원가입
           </Link>
         </div>

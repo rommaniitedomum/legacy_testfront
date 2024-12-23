@@ -34,7 +34,7 @@ const FavoriteList = () => {
       try {
         const token = localStorage.getItem("token");
         const response = await axios.get(
-          "http://localhost:8000/pgdb/favoritelist",
+          "http://3.86.247.231//pgdb/favoritelist",
           { headers: { Authorization: `Bearer ${token}` } }
         );
         setFavorites({
@@ -71,7 +71,7 @@ const FavoriteList = () => {
         type: type === "heritage" ? "heritage" : "event",
       };
 
-      await axios.delete("http://localhost:8000/pgdb/favoritelist", {
+      await axios.delete("http://3.86.247.231//pgdb/favoritelist", {
         headers: { Authorization: `Bearer ${token}` },
         data: { id: requestData.id, type: requestData.type },
       });
@@ -141,7 +141,7 @@ const FavoriteList = () => {
     try {
       const token = localStorage.getItem("token");
       const response = await axios.get(
-        "http://localhost:8000/pgdb/favoritelist",
+        "http://3.86.247.231//pgdb/favoritelist",
         { headers: { Authorization: `Bearer ${token}` } }
       );
 
@@ -251,15 +251,13 @@ const Section = ({
                 <button
                   onClick={() => onPageChange(-1, type)}
                   disabled={page === 0}
-                  className="absolute left-10 top-1/2 -translate-y-1/2 z-10 border rounded-full p-2 hover:bg-gray-200 flex items-center justify-center cursor-pointer"
-                >
+                  className="absolute left-10 top-1/2 -translate-y-1/2 z-10 border rounded-full p-2 hover:bg-gray-200 flex items-center justify-center cursor-pointer">
                   <IoIosArrowBack size={24} />
                 </button>
                 <button
                   onClick={() => onPageChange(1, type)}
                   disabled={page >= maxPage}
-                  className="absolute right-10 top-1/2 -translate-y-1/2 z-10 border rounded-full p-2 hover:bg-gray-200 flex items-center justify-center cursor-pointer"
-                >
+                  className="absolute right-10 top-1/2 -translate-y-1/2 z-10 border rounded-full p-2 hover:bg-gray-200 flex items-center justify-center cursor-pointer">
                   <IoIosArrowForward size={24} />
                 </button>
               </>
@@ -274,8 +272,7 @@ const Section = ({
                     opacity: 0,
                     animation: `slideIn 0.5s ease-out ${idx * 150}ms forwards`,
                   }}
-                  onClick={() => onOpenModal(item, type)}
-                >
+                  onClick={() => onOpenModal(item, type)}>
                   <div className="relative overflow-hidden rounded">
                     <img
                       src={
@@ -296,8 +293,7 @@ const Section = ({
                         e.stopPropagation();
                         onRemove(item, type);
                       }}
-                      className="absolute bottom-2 left-2 text-yellow-400 hover:text-yellow-500"
-                    >
+                      className="absolute bottom-2 left-2 text-yellow-400 hover:text-yellow-500">
                       <AiFillStar className="text-2xl" />
                     </button>
                   </div>

@@ -27,7 +27,7 @@ const PageModal = ({ isOpen, onClose, item, type, onUpdate }) => {
 
       await axios({
         method: "delete",
-        url: "http://localhost:8000/pgdb/favoritelist",
+        url: "http://3.86.247.231//pgdb/favoritelist",
         headers: {
           Authorization: `Bearer ${token}`,
           "Content-Type": "application/json",
@@ -89,12 +89,10 @@ const PageModal = ({ isOpen, onClose, item, type, onUpdate }) => {
           position: "fixed",
           zIndex: 2147483646,
         }}
-        onClick={onClose}
-      >
+        onClick={onClose}>
         <div
           className="relative bg-white text-black p-5 rounded-lg w-[90%] max-w-[800px] max-h-[80vh] overflow-y-auto"
-          onClick={(e) => e.stopPropagation()}
-        >
+          onClick={(e) => e.stopPropagation()}>
           <div className="flex justify-between items-center mb-5">
             <h2 className="text-[28px] m-0 MainFont break-words flex-1 pr-5">
               {type === "heritage" ? item.heritagename : item.festivalname}
@@ -102,14 +100,12 @@ const PageModal = ({ isOpen, onClose, item, type, onUpdate }) => {
             <div className="flex items-center gap-4">
               <button
                 onClick={handleRemoveFavorite}
-                className="text-2xl text-yellow-500 hover:text-yellow-600"
-              >
+                className="text-2xl text-yellow-500 hover:text-yellow-600">
                 <AiFillStar />
               </button>
               <button
                 onClick={onClose}
-                className="bg-blue-800 text-white px-4 py-1 border-none text-[25px] rounded cursor-pointer"
-              >
+                className="bg-blue-800 text-white px-4 py-1 border-none text-[25px] rounded cursor-pointer">
                 X
               </button>
             </div>
