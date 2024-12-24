@@ -48,10 +48,10 @@
 ```
 ## 📝 개발로그
 
-## 📚 디버깅로그
+### 📚 디버깅로그
 
 <plaintext>
-### 📄 문제해결과정
+#### 📄 문제해결과정
 (python 환경)
 2024-12-24 11:58:33.085 [info] [Info  - 11:58:33 AM] (7832) Assuming Python version 3.12.7.final.0
 2024-12-24 11:58:33.426 [info] [Error - 11:58:33 AM] (7832) File or directory "<default workspace root>" does not exist.
@@ -118,3 +118,4 @@ Legacy Project와 관련된 문의, 서비스, 정보에 대해 더 알고 싶�
 
 [Back to top](#top)
 ```
+
