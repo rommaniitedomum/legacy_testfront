@@ -1,5 +1,6 @@
 <a name="top"></a>
 [![Legacy project](/legacyprjt-main.png)](https://test-front-lovat.vercel.app)
+
 ![JavaScript Badge](https://img.shields.io/badge/JavaScript-ES6+-yellow?logo=javascript&logoColor=white&style=flat)
 ![Python Badge](https://img.shields.io/badge/Python-3.9+-blue?logo=python&logoColor=white&style=flat)
 ![OS](https://img.shields.io/badge/OS-ubuntu%2C%20windows-0078D4)
@@ -45,10 +46,10 @@
 | **마이페이지**      | 사용자 관심 문화재 및 행사 목록 관리 | `FavoriteList.jsx`, `Mypage.jsx`, `favoriteSlice.js`, `PageModal.jsx`      |
 | **로그인/회원가입** | 사용자 인증 및 계정 관리             | `useAuth.js`, `authSlice.js`, `Login.jsx`, `Signup.jsx`, `apiUrl.js`       |
 
-
 ## 📝 개발로그
 
 ## 📚 디버깅로그
+
 ```
 (python 환경)
 2024-12-24 11:58:33.085 [info] [Info  - 11:58:33 AM] (7832) Assuming Python version 3.12.7.final.0
@@ -65,17 +66,36 @@ EnvironmentNameNotFound: Could not find conda environment: myenv
 You can list all discoverable environments with `conda info --envs`.
 ----------------------------------------------------------------
 ```
-##  **EC2에서 Miniconda 확인하기 (1. myenv 확인, 2.Windows에서 Linux로 전환 체크)**
+
+## **EC2에서 Miniconda 확인하기 (1. myenv 확인, 2.Windows에서 Linux로 전환 체크)**
+
 1. **Miniconda 환경설정**:
    - SSH를 통해 EC2 서버에 접속 후 다음 명령 실행:
-    conda info --envs
-        *결과: 없음
+     conda info --envs
+     _결과: 없음_
+
+<<<<<<< HEAD
+
+```
+문제발생
+(python 환경)
+// ... existing error logs ...
+----------------------------------------------------------------
+(PostgreSQL 데이터 삽입 오류)
+psycopg2.errors.InvalidTextRepresentation: invalid input syntax for type integer
+LINE 1: COPY heritageList (ccbaKdcd,ccbaAsno,ccbaCtcd,ccbaMnm1,ccbaLcad,ccceName,content,imageUrl)
+----------------------------------------------------------------
+```
+
+## **EC2에서 Miniconda 확인하기 (1. myenv 확인, 2.Windows에서 Linux로 전환 체크)**
 
      conda create -n myenv python=3.12.7 (나중에는 워크플로 수정)
-        *결과: myenv 생성
+        *결과: myenv 생성*
 
-2. ** 라우팅 Linux화
-        // Python 경로 및 스크립트 경로 설정
+2. **라우팅 Linux화**:
+
+```javascript
+    // Python 경로 및 스크립트 경로 설정
     const pythonPath = path.join(
       "/home/ubuntu/miniconda",
       "envs",
@@ -84,26 +104,61 @@ You can list all discoverable environments with `conda info --envs`.
       "python3"
     );
     const scriptPath = path.join(__dirname, "chatbot", "chatbot.py");
-
     let answer = "";
 
-    *결과: chatbot 연결 확인
-
-    **문제해결: 다른환경에도 작동하게 Github Actions yml 에 myenv 생성 명령어 추가
 ```
+
+_결과: chatbot 연결 확인_
+
+4. **문제해결: 다른환경에도 작동하게 Github Actions yml 에 myenv 생성 명령어 추가**
+
+```yaml
     - name: Create Conda Environment
   run: |
     eval "$($HOME/miniconda/bin/conda shell.bash hook)"
     conda create -n myenv python=3.12.7 || echo "Environment already exists."
 
 ```
+
+### **PostgreSQL CSV 데이터 삽입 문제 해결**
+
+1. **데이터베이스 연결 설정**:
+
+```python
+import psycopg2
+
+# PostgreSQL 연결
+conn = psycopg2.connect(
+
+)
+cur = conn.cursor()
+```
+
+2. **CSV 파일 데이터 삽입**:
+
+```python
+# CSV 파일 직접 삽입
+try:
+    with open("heritageList.csv", "r", encoding="utf-8-sig") as f:
+        cur.copy_expert("""
+            COPY heritageList (ccbaKdcd,ccbaAsno,ccbaCtcd,ccbaMnm1,ccbaLcad,ccceName,content,imageUrl)
+            FROM STDIN WITH CSV HEADER
+        """, f)
+    conn.commit()
+    print("Data inserted successfully using COPY!")
+except Exception as e:
+    conn.rollback()
+    print("Error:", e)
+finally:
+    cur.close()
+    conn.close()
+```
+
+**문제해결**: CSV 파일의 인코딩을 'utf-8-sig'로 설정하고 데이터 타입 검증 후 성공적으로 삽입 완료
+
 ## 🦜 랭체인
 
-
-
 ## 📃 자료
-
-
 
 ## 🗨️ 연락처
 
@@ -113,7 +168,4 @@ Legacy Project와 관련된 문의, 서비스, 정보에 대해 더 알고 싶�
 - **웹사이트**: 유산사이트(https://test-front-lovat.vercel.app).
 - **기타문의**: 카카오 플러스
 
-
 [Back to top](#top)
-```
-
