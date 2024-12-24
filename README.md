@@ -19,6 +19,7 @@
 
 - [설명](#-설명)
 - [구성](#-구성)
+- [개발환경](#-개발환경설정)
 - [개발로그](#-개발로그)
 - [디버깅로그](#-디버깅로그)
 - [랭체인구성](#-랭체인)
@@ -46,9 +47,38 @@
 | **마이페이지**      | 사용자 관심 문화재 및 행사 목록 관리 | `FavoriteList.jsx`, `Mypage.jsx`, `favoriteSlice.js`, `PageModal.jsx`      |
 | **로그인/회원가입** | 사용자 인증 및 계정 관리             | `useAuth.js`, `authSlice.js`, `Login.jsx`, `Signup.jsx`, `apiUrl.js`       |
 
-## 📝 개발로그 (Development Log)
+## 💻 개발환경설정
 
-노승현
+```shell
+# 터미널 열기(Command Prompt or PowerShell for Windows, Terminal for macOS or Linux)
+
+# Git 클론
+git clone <프론트엔드 리포지토리 링크> front
+git clone <백엔드 리포지토리 링크> back
+
+# back/front터미널 npm install
+cd front
+npm install
+cd back
+npm install
+
+#posgresql 연결 확인 (.env체크)
+
+#conda 환경 체크(requirements.txt 참조)
+
+conda create -n chat_env python=3.8 -y
+conda activate chat_env
+conda install pip
+pip install -r requirements.txt
+python -c "import openai; print('Environment is ready.')"
+
+# frontend backend 구동
+npm start
+```
+
+## 📝 개발로그
+
+## 노승현
 
 ### 2024-11-23
 
@@ -74,7 +104,7 @@
   - 사용자 질문-응답 시스템 구축
   - 대화형 인터페이스 개발
 
-박준호
+## 박준호
 
 ### 2024-12-03
 
@@ -104,7 +134,7 @@
   - 로그 모니터링 시스템 구축
   - 서버 성능 최적화
 
-천서영
+## 천서영
 
 ### 2024-11-26
 
@@ -133,76 +163,77 @@
   - 개인화 설정 기능 구현
   - 사용자 활동 내역 조회 기능
 
+## 정지원
+
+### 2024-11-27
+
+- 행사일정 UI 설계 완료
+  - 사용자 친화적 인터페이스 구현
+
+### 2024-11-28
+
+- 캘린더 작업 완료
+  - 행사 일정 표시 및 관리 기능 구현
+
+### 2024-12-02
+
+- Event Modal 구현 완료
+  - 행사 상세 정보 표시 기능
+- Regions Button 구현 완료
+  - 지역별 필터링 기능 추가
+
+### 2024-12-13
+
+- 즐겨찾기 기능 구현 완료
+  - 사용자 맞춤 행사 저장 기능
+
+## 윤금조
+
+### 2024-11-25
+
+- Nav Bar UI 설계 완료
+  - 메인 네비게이션 구조 구현
+
+### 2024-11-27
+
+- Swiper Slide 설계 완료
+  - 메인 페이지 슬라이드 기능 구현
+
+### 2024-11-28
+
+- ScrollToTop 버튼 설계 완료
+  - 페이지 상단 이동 기능 구현
+
+### 2024-12-02
+
+- Chat bot 이동 버튼 설계 완료
+  - 챗봇 접근성 개선
+
+### 2024-12-19
+
+- RecentItems 설계 완료
+  - 최근 조회 항목 표시 기능
+
+## 설송이
+
+### 2024-12-02
+
+- 로그인 기능 구현 완료
+  - 사용자 인증 시스템 구축
+- 회원가입 기능 구현 완료
+  - 신규 사용자 등록 시스템 구현
+
+### 2024-12-04
+
+- My Page 회원 정보 기능 구현 완료
+  - 사용자 프로필 관리 기능
+  - 개인정보 수정 기능
+
 ## 📚 디버깅로그
 
-```
-(python 환경)
-2024-12-24 11:58:33.085 [info] [Info  - 11:58:33 AM] (7832) Assuming Python version 3.12.7.final.0
-2024-12-24 11:58:33.426 [info] [Error - 11:58:33 AM] (7832) File or directory "<default workspace root>" does not exist.
-2024-12-24 11:58:33.426 [info] [Info  - 11:58:33 AM] (7832) No source files found.
-----------------------------------------------------------------
-(github action)
-Run eval "$($HOME/miniconda/bin/conda shell.bash hook)"
-  eval "$($HOME/miniconda/bin/conda shell.bash hook)"
-  conda activate myenv
-  if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
-  shell: /usr/bin/bash -e {0}
-EnvironmentNameNotFound: Could not find conda environment: myenv
-You can list all discoverable environments with `conda info --envs`.
-----------------------------------------------------------------
-```
+## **PostgreSQL CSV 데이터 삽입 문제 해결**
 
-## **EC2에서 Miniconda 확인하기 (1. myenv 확인, 2.Windows에서 Linux로 전환 체크)**
-
-1. **Miniconda 환경설정**:
-   - SSH를 통해 EC2 서버에 접속 후 다음 명령 실행:
-     conda info --envs
-     _결과: 없음_
-
-```
-문제발생
-(python 환경)
-// ... existing error logs ...
-----------------------------------------------------------------
-(PostgreSQL 데이터 삽입 오류)
-psycopg2.errors.InvalidTextRepresentation: invalid input syntax for type integer
-LINE 1: COPY heritageList (ccbaKdcd,ccbaAsno,ccbaCtcd,ccbaMnm1,ccbaLcad,ccceName,content,imageUrl)
-----------------------------------------------------------------
-```
-
-## **EC2에서 Miniconda 확인하기 (1. myenv 확인, 2.Windows에서 Linux로 전환 체크)**
-
-     conda create -n myenv python=3.12.7 (나중에는 워크플로 수정)
-        *결과: myenv 생성*
-
-2. **라우팅 Linux화**:
-
-```javascript
-// Python 경로 및 스크립트 경로 설정
-const pythonPath = path.join(
-  "/home/ubuntu/miniconda",
-  "envs",
-  "myenv",
-  "bin",
-  "python3"
-);
-const scriptPath = path.join(__dirname, "chatbot", "chatbot.py");
-let answer = "";
-```
-
-_결과: chatbot 연결 확인_
-
-4. **문제해결: 다른환경에도 작동하게 Github Actions yml 에 myenv 생성 명령어 추가**
-
-```yaml
-    - name: Create Conda Environment
-  run: |
-    eval "$($HOME/miniconda/bin/conda shell.bash hook)"
-    conda create -n myenv python=3.12.7 || echo "Environment already exists."
-
-```
-
-### **PostgreSQL CSV 데이터 삽입 문제 해결**
+### HeritageList 데이터 삽입
 
 1. **데이터베이스 연결 설정**:
 
@@ -236,15 +267,81 @@ finally:
     conn.close()
 ```
 
-**문제해결**: CSV 파일의 인코딩을 'utf-8-sig'로 설정하고 데이터 타입 검증 후 성공적으로 삽입 완료
+### FesitvalList 데이터 삽입
 
-## 🦜 랭체인
+```python
+import psycopg2
+
+# PostgreSQL 연결
+conn = psycopg2.connect(
+)
+cur = conn.cursor()
+
+# 기존 테이블 삭제 (있다면)
+try:
+    cur.execute("DROP TABLE IF EXISTS festivallist;")
+    conn.commit()
+except Exception as e:
+    conn.rollback()
+    print("Error dropping table:", e)
+
+# 새 테이블 생성
+try:
+    cur.execute("""
+        CREATE TABLE festivallist (
+            축제id SERIAL PRIMARY KEY,
+            seqNo INTEGER,
+            siteCode INTEGER,
+            subTitle VARCHAR(200),
+            subContent TEXT,
+            sDate DATE,
+            eDate DATE,
+            groupName VARCHAR(100),
+            contact VARCHAR(50),
+            subDesc VARCHAR(200),
+            subPath VARCHAR(200),
+            subDesc2 VARCHAR(100),
+            subDesc3 VARCHAR(100),
+            mainImageT TEXT,
+            sido VARCHAR(50),
+            gugun VARCHAR(50),
+            subDate VARCHAR(200),
+            eventName VARCHAR(200),
+            CATEGORY_NM VARCHAR(100),
+            URL VARCHAR(500),
+            imageUrl TEXT,
+            EVENT_TM_INFO VARCHAR(100)
+        );
+    """)
+    conn.commit()
+    print("Table created successfully!")
+except Exception as e:
+    conn.rollback()
+    print("Error creating table:", e)
+
+# CSV 파일 삽입
+try:
+    with open("events_data.csv", "r", encoding="utf-8-sig") as f:
+        cur.copy_expert("""
+            COPY festivallist (seqNo,siteCode,subTitle,subContent,sDate,eDate,groupName,contact,subDesc,subPath,subDesc2,subDesc3,mainImageT,sido,gugun,subDate,eventName,CATEGORY_NM,URL,imageUrl,EVENT_TM_INFO)
+            FROM STDIN WITH (FORMAT CSV, HEADER)
+        """, f)
+    conn.commit()
+    print("Data inserted successfully using COPY!")
+except Exception as e:
+    conn.rollback()
+    print("Error:", e)
+finally:
+    cur.close()
+    conn.close()
+```
+
+**문제해결**: CSV 파일의 인코딩을 'utf-8-sig'로 설정하고 데이터 타입 검증 후 성공적으로 삽입 완료
 
 ## 📃 자료
 
 - [PPT자료](https://docs.google.com/presentation/d/1Ania46S7dpLR5hvHF7ibLA4QGbNxtqgE/edit#slide=id.g32084deacbf_3_863/)
 - [erd클라우드](https://www.erdcloud.com/d/x7FB5qMQ6fxk5oGMv/)
-
 
 ## 🗨️ 연락처
 
