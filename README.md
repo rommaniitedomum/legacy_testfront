@@ -45,13 +45,11 @@
 | **마이페이지**      | 사용자 관심 문화재 및 행사 목록 관리 | `FavoriteList.jsx`, `Mypage.jsx`, `favoriteSlice.js`, `PageModal.jsx`      |
 | **로그인/회원가입** | 사용자 인증 및 계정 관리             | `useAuth.js`, `authSlice.js`, `Login.jsx`, `Signup.jsx`, `apiUrl.js`       |
 
-```
+
 ## 📝 개발로그
 
-### 📚 디버깅로그
-
-<plaintext>
-#### 📄 문제해결과정
+## 📚 디버깅로그
+```
 (python 환경)
 2024-12-24 11:58:33.085 [info] [Info  - 11:58:33 AM] (7832) Assuming Python version 3.12.7.final.0
 2024-12-24 11:58:33.426 [info] [Error - 11:58:33 AM] (7832) File or directory "<default workspace root>" does not exist.
@@ -66,7 +64,7 @@ Run eval "$($HOME/miniconda/bin/conda shell.bash hook)"
 EnvironmentNameNotFound: Could not find conda environment: myenv
 You can list all discoverable environments with `conda info --envs`.
 ----------------------------------------------------------------
-</plaintext>
+```
 ##  **EC2에서 Miniconda 확인하기 (1. myenv 확인, 2.Windows에서 Linux로 전환 체크)**
 1. **Miniconda 환경설정**:
    - SSH를 통해 EC2 서버에 접속 후 다음 명령 실행:
@@ -92,13 +90,13 @@ You can list all discoverable environments with `conda info --envs`.
     *결과: chatbot 연결 확인
 
     **문제해결: 다른환경에도 작동하게 Github Actions yml 에 myenv 생성 명령어 추가
-<plaintext>
+```
     - name: Create Conda Environment
   run: |
     eval "$($HOME/miniconda/bin/conda shell.bash hook)"
     conda create -n myenv python=3.12.7 || echo "Environment already exists."
 
-</plaintext>
+```
 ## 🦜 랭체인
 
 
