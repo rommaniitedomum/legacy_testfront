@@ -46,79 +46,74 @@
 
 
 
-## 📝 설치
+## 📚 디버깅로그
+### 📄 문제해결과정
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+```plaintext
+(python 환경)
+2024-12-24 11:58:33.085 [info] [Info  - 11:58:33 AM] (7832) Assuming Python version 3.12.7.final.0
+2024-12-24 11:58:33.426 [info] [Error - 11:58:33 AM] (7832) File or directory "<default workspace root>" does not exist.
+2024-12-24 11:58:33.426 [info] [Info  - 11:58:33 AM] (7832) No source files found.
+----------------------------------------------------------------
+(github action)
+Run eval "$($HOME/miniconda/bin/conda shell.bash hook)"
+  eval "$($HOME/miniconda/bin/conda shell.bash hook)"
+  conda activate myenv
+  if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+  shell: /usr/bin/bash -e {0}
+EnvironmentNameNotFound: Could not find conda environment: myenv
+You can list all discoverable environments with `conda info --envs`.
+----------------------------------------------------------------
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+##  **EC2에서 Miniconda 확인하기 (1. myenv 확인, 2.Windows에서 Linux로 전환 체크)**
+1. **Miniconda 환경설정**:
+   - SSH를 통해 EC2 서버에 접속 후 다음 명령 실행:
+    conda info --envs
+        *결과: 없음
 
-### `npm test`
+     conda create -n myenv python=3.12.7 (나중에는 워크플로 수정)
+        *결과: myenv 생성
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+2. ** 라우팅 Linux화
+        // Python 경로 및 스크립트 경로 설정
+    const pythonPath = path.join(
+      "/home/ubuntu/miniconda",
+      "envs",
+      "myenv",
+      "bin",
+      "python3"
+    );
+    const scriptPath = path.join(__dirname, "chatbot", "chatbot.py");
 
-### `npm run build`
+    let answer = "";
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+    *결과: chatbot 연결 확인
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+    **문제해결: 다른환경에도 작동하게 Github Actions yml 에 myenv 생성 명령어 추가
+    ```
+    - name: Create Conda Environment
+  run: |
+    eval "$($HOME/miniconda/bin/conda shell.bash hook)"
+    conda create -n myenv python=3.12.7 || echo "Environment already exists."
+    ##
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## 🦜 랭체인
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## 📃 자료
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-## Learn More
+## 🗨️ 연락처
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+Legacy Project와 관련된 문의, 서비스, 정보에 대해 더 알고 싶으시면 언제든지 저희에게 문의하세요. 지원을 제공하고 모든 질문에 답변드릴 준비가 되어 있습니다. 아래는 저희 팀과 연락할 수 있는 방법입니다:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- **이메일**: 문의/지원 [support@legacy.com](mailto:support@legacy.com).
+- **웹사이트**: 유산사이트(https://test-front-lovat.vercel.app).
+- **기타문의**: 카카오 플러스
 
-### Code Splitting
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+[Back to top](#top)
+````
 
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-
-├── front/
-│ ├── public/ # Public static assets
-│ ├── src/
-│ │ ├── api/ # API configuration
-│ │ ├── assets/ # Images and static media
-│ │ ├── components/ # Reusable components
-│ │ ├── redux/ # State management files
-│ │ ├── user/ # User-specific components
-│ │ ├── utils/ # Utility functions
-│ │ ├── App.js # Frontend entry point
-│ │ └── index.js # React entry point
-│ ├── package.json # Frontend dependencies
-│ └── tailwind.config.js # TailwindCSS configuration
